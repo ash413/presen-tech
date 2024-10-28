@@ -1,11 +1,13 @@
 from openai import OpenAI
+from dotenv import load_dotenv
 
-client = OpenAI(api_key="")
 import os
 import typing
 
-# Set OpenAI API key
-# openai.api_key = os.getenv("OPENAI_KEY")
+load_dotenv()  # Load .env file
+api_key = os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=api_key)
 
 def gpt_divide(text):
     prompt_templates = {
