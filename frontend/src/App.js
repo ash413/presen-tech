@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import Result from './components/Result';
+import UploadForm from './components/UploadForm';
 
 
 function App() {
@@ -43,7 +45,14 @@ function App() {
 
   return (
     <div>
-      
+      <h1>
+        Presen-Tech - PDF to PPT generator
+      </h1>
+      <UploadForm  onFileUpload={handleFileUpload} onDocTypeChange={handleDocTypeChange}/>
+      <button onClick={handleSubmit} disabled={loading} >
+        {loading ? "Generating..." : "Generate PPT"}
+      </button>
+      {generatedppt && <Result generatedppt={generatedppt} />}
     </div>
   );
 }
