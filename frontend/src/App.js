@@ -29,7 +29,7 @@ function App() {
     formData.append("docType", docType);
 
     try {
-      const response = await fetch("http://localhost:5000/generate-ppt", {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/generate-ppt`, {
         method: "POST",
         body: formData
       });

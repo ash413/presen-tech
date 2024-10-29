@@ -1,13 +1,16 @@
 import os
-
+from dotenv import load_dotenv
 from flask import Flask, redirect, url_for, render_template, request, session, send_file
 from flask_session import Session
 from io import BytesIO
 
-from helpers import process_pdf
+from helper import process_pdf
 from utils.generate_ppt import generate_presentation
 from utils.gpt import gpt_divide
 
+load_dotenv()
+# Load the frontend URL from the environment variable
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -62,8 +65,10 @@ def upload():
 
         if 'file' not in request.files:
             return 'No file part', 400
+        f = request.files['file']
+        if not allowed_file(f.filename):
+            return "File type not allowed", 400
 
-        f = request.files['file'] 
         # f.save(f.filename) 
 
         # Save the uploaded file to 'uploads' folder
@@ -86,7 +91,8 @@ def upload():
         session['ppt_buffer'] = ppt_buffer.getvalue()
             
         return redirect(url_for('download_presentation')) 
-    return render_template("http://localhost:3000")  
+
+    return redirect(FRONTEND_URL) 
 
 @app.route("/download")
 def download_presentation():
