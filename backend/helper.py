@@ -2,7 +2,7 @@ from flask import redirect, render_template, session
 from functools import wraps
 import PyPDF2
 
-from model import summary
+from backend.model import summary
 
 def extract_text_from_pdf(file_path):
     """ Function to extract text from a PDF file using PyPDF2 """
