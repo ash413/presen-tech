@@ -4,7 +4,7 @@ from flask import Flask, redirect, url_for, render_template, request, session, s
 from flask_session import Session
 from io import BytesIO
 
-from backend.helper import process_pdf
+from helper import process_pdf
 from utils.generate_ppt import generate_presentation
 from utils.gpt import gpt_divide
 
@@ -91,8 +91,7 @@ def upload():
         session['ppt_buffer'] = ppt_buffer.getvalue()
             
         return redirect(url_for('download_presentation')) 
-
-    return redirect(FRONTEND_URL) 
+    return render_template(FRONTEND_URL) 
 
 @app.route("/download")
 def download_presentation():
