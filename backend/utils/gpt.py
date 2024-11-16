@@ -9,7 +9,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=api_key)
 
-def gpt_divide(text):
+def gpt_divide(text, doc_type="general"):
     prompt_templates = {
         "research_paper": "Divide this text into 6 topics: Introduction, Literature Review, Methodology, Results, Discussion, Conclusion. Each topic should have 4 points. The points should be concise and presentation-friendly.",
         "textbook": "Divide this text into chapters or sections as seen in textbooks. Each section should have concise points that are presentation-friendly.",

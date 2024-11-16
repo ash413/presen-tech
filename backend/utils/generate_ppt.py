@@ -18,7 +18,7 @@ def generate_presentation(text):
     title_shape = slide.shapes.title
     title_shape.text = "pdf to ppt project"
     title_shape.text_frame.paragraphs[0].font.size = 44  # Set font size for title
-    slide.placeholders[1].text = "By Tanvi, Toshal and Vaish"
+    slide.placeholders[1].text = "By Ash"
 
     # Adding slides dynamically for each topic with bullet points
     for topic in topics:

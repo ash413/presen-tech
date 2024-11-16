@@ -9,6 +9,7 @@ from utils.generate_ppt import generate_presentation
 from utils.gpt import gpt_divide
 
 load_dotenv()
+
 # Load the frontend URL from the environment variable
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 

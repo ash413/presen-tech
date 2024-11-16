@@ -8,8 +8,10 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize
 import numpy as np
 import pandas as pd
+import re
 
 
+nltk.download('punkt_tab')
 nltk.download('punkt')
 nltk.download('stopwords')\
 
